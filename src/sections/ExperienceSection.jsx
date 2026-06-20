@@ -16,7 +16,6 @@ const TechIcon = ({ name, size = 28 }) => {
       return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-1h2v1zm0-3h-2v-5h2v5z" fill="#00758F"/>
-          {/* Stylized database rings dolphin outline */}
           <path d="M6 10s3-4 6-4 6 4 6 4M6 14s3-3 6-3 6 3 6 3" stroke="#F29111" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
       );
@@ -24,7 +23,6 @@ const TechIcon = ({ name, size = 28 }) => {
       return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="22" height="22" x="1" y="1" rx="6" fill="#382618"/>
-          {/* Beaver shape / Database container representation */}
           <ellipse cx="12" cy="13" rx="7" ry="5" fill="#C49A6C" stroke="#ffffff" strokeWidth="1.5"/>
           <path d="M12 8V6M9 9V7M15 9V7" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"/>
           <circle cx="10" cy="12" r="1" fill="#000000"/>
@@ -34,7 +32,6 @@ const TechIcon = ({ name, size = 28 }) => {
     case 'tableau':
       return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Tableau multi-colored cross stars */}
           <rect width="24" height="24" rx="6" fill="#ffffff" />
           <line x1="12" y1="3" x2="12" y2="21" stroke="#E1251B" strokeWidth="2.2" strokeLinecap="round"/>
           <line x1="3" y1="12" x2="21" y2="12" stroke="#1F4E79" strokeWidth="2.2" strokeLinecap="round"/>
@@ -77,7 +74,6 @@ const TechIcon = ({ name, size = 28 }) => {
       return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="22" height="22" x="1" y="1" rx="6" fill="#2d3748" />
-          {/* Terminal Console character prompt representation for Linux core */}
           <text x="4" y="14" fill="#48bb78" fontSize="10" fontWeight="900" fontFamily="monospace">&gt;_</text>
         </svg>
       );
@@ -85,7 +81,6 @@ const TechIcon = ({ name, size = 28 }) => {
       return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="22" height="22" x="1" y="1" rx="6" fill="#4285F4" />
-          {/* Database grid representing BigQuery */}
           <circle cx="8" cy="8" r="2.5" fill="#ffffff"/>
           <circle cx="16" cy="8" r="2.5" fill="#ffffff"/>
           <circle cx="8" cy="16" r="2.5" fill="#ffffff"/>
@@ -181,10 +176,10 @@ const ExperienceSection = () => {
   return (
     <div>
       {/* Intro Header */}
-      <div style={{ marginBottom: '32px' }}>
+      <div style={{ marginBottom: '40px' }}>
         <h3 style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: '22px',
+          fontSize: '24px',
           fontWeight: '900',
           color: 'var(--color-charcoal)',
           textTransform: 'uppercase',
@@ -193,75 +188,127 @@ const ExperienceSection = () => {
           Resume Dossier
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-muted)', marginTop: '6px', lineHeight: '1.5' }}>
-          My professional timeline, software expertise, and educational history displayed in structured archive columns.
+          My professional timeline, software expertise, and educational history structured for optimal clarity.
         </p>
       </div>
 
-      {/* Grid columns */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '30px'
-      }} className="resume-grid-layout">
-        
-        {/* Column 1: Experience */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <h4 style={{ fontSize: '15px', fontWeight: '800', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-charcoal)' }}>
-            <Briefcase size={16} color="var(--color-text-muted)" />
-            Experience
-          </h4>
+      {/* 1. Work Experience (Full Width Timeline) */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '48px' }}>
+        <h4 style={{
+          fontSize: '18px',
+          fontWeight: '800',
+          textTransform: 'uppercase',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          color: 'var(--color-charcoal)'
+        }}>
+          <Briefcase size={20} color="var(--color-red)" />
+          Work Experience
+        </h4>
+        <div className="clean-card" style={{ padding: '36px' }}>
           <Timeline items={experienceData} />
         </div>
+      </div>
 
-        {/* Column 2: Expertise & Skills */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      {/* 2. Education & Organizations (Side-by-Side) */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '30px',
+        marginBottom: '48px'
+      }} className="education-grid-layout">
+        
+        {/* Education column */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <h4 style={{
+            fontSize: '18px',
+            fontWeight: '800',
+            textTransform: 'uppercase',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: 'var(--color-charcoal)'
+          }}>
+            <GraduationCap size={20} color="var(--color-red)" />
+            Education
+          </h4>
+          <div className="clean-card" style={{ padding: '36px', height: '100%' }}>
+            <Timeline items={educationData} />
+          </div>
+        </div>
+
+        {/* Organizations / Leadership column */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <h4 style={{
+            fontSize: '18px',
+            fontWeight: '800',
+            textTransform: 'uppercase',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: 'var(--color-charcoal)'
+          }}>
+            <Award size={20} color="var(--color-red)" />
+            Leadership &amp; Organizations
+          </h4>
+          <div className="clean-card" style={{ padding: '36px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '14px' }}>
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', fontWeight: '800', color: 'var(--color-red)', textTransform: 'uppercase' }}>
+                <span>HMIT ITS SURABAYA</span>
+                <span>2025</span>
+              </div>
+              <h5 style={{ fontSize: '15px', fontWeight: '800', color: 'var(--color-charcoal)', marginTop: '4px' }}>Staff of External Affairs</h5>
+              <p style={{ fontSize: '13px', color: 'var(--color-text-muted)', lineHeight: '1.5', marginTop: '6px' }}>
+                Led the ITCare 2.0 aid distribution program. Organized "Company Visit 2.0" to Apple Developer Academy and IDX (Indonesia Stock Exchange).
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* 3. Core Focus, Tech Stack, & Competencies (Grid Dashboard) */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <h4 style={{
+          fontSize: '18px',
+          fontWeight: '800',
+          textTransform: 'uppercase',
+          color: 'var(--color-charcoal)'
+        }}>
+          Skills &amp; Expertise
+        </h4>
+        
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1.2fr 2fr 1.5fr',
+          gap: '24px'
+        }} className="skills-grid-layout">
           
-          {/* Expertise List */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <h4 style={{ fontSize: '15px', fontWeight: '800', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-charcoal)' }}>
-              <Award size={16} color="var(--color-text-muted)" />
+          {/* Core Focus Card */}
+          <div className="clean-card" style={{ display: 'flex', flexDirection: 'column', gap: '14px', padding: '28px' }}>
+            <h5 style={{ fontSize: '13px', fontWeight: '900', textTransform: 'uppercase', color: 'var(--color-red)', letterSpacing: '0.5px' }}>
               Core Focus
-            </h4>
-            <div className="clean-card" style={{
-              fontSize: '13px',
-              color: 'var(--color-text-muted)',
-              lineHeight: '1.6',
-              fontWeight: '600'
-            }}>
-              Data Analytics, Big Data Pipelines, Machine Learning Auditing, SDN Routing, and Visual Data Storytelling.
+            </h5>
+            <div style={{ fontSize: '14px', color: 'var(--color-text-muted)', lineHeight: '1.6', fontWeight: '600' }}>
+              Data Analytics, Big Data Pipelines, Machine Learning Auditing, GGSN Routing, Capacity Planning, and Visual Data Storytelling.
             </div>
           </div>
 
-          {/* Hard Skills (with Vector Icons) */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <h4 style={{ fontSize: '15px', fontWeight: '800', textTransform: 'uppercase', color: 'var(--color-charcoal)' }}>
+          {/* Tech Stack Card */}
+          <div className="clean-card" style={{ display: 'flex', flexDirection: 'column', gap: '14px', padding: '28px' }}>
+            <h5 style={{ fontSize: '13px', fontWeight: '900', textTransform: 'uppercase', color: 'var(--color-red)', letterSpacing: '0.5px' }}>
               Tech Stack
-            </h4>
-            <div className="clean-card" style={{
+            </h5>
+            <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(90px, 1fr))',
               gap: '8px'
             }}>
               {hardSkills.map((skill, idx) => (
-                <div 
-                  key={idx}
-                  style={{
-                    borderRadius: '12px',
-                    padding: '8px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    backgroundColor: '#fafafa',
-                    border: '1px solid rgba(0,0,0,0.03)',
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
-                  }}
-                  title={skill.label}
-                >
-                  {/* Styled Vector SVG Logo rendering */}
-                  <TechIcon name={skill.name} size={26} />
-                  <span style={{ fontSize: '8px', fontWeight: '800', textAlign: 'center', color: 'var(--color-charcoal)', textTransform: 'uppercase' }}>
+                <div key={idx} className="tech-stack-item-card" title={skill.label}>
+                  <TechIcon name={skill.name} size={28} />
+                  <span style={{ fontSize: '9px', fontWeight: '800', textAlign: 'center', color: 'var(--color-charcoal)', textTransform: 'uppercase', marginTop: '2px' }}>
                     {skill.label}
                   </span>
                 </div>
@@ -269,29 +316,14 @@ const ExperienceSection = () => {
             </div>
           </div>
 
-          {/* Soft Skills */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <h4 style={{ fontSize: '15px', fontWeight: '800', textTransform: 'uppercase', color: 'var(--color-charcoal)' }}>
+          {/* Competencies Card */}
+          <div className="clean-card" style={{ display: 'flex', flexDirection: 'column', gap: '14px', padding: '28px' }}>
+            <h5 style={{ fontSize: '13px', fontWeight: '900', textTransform: 'uppercase', color: 'var(--color-red)', letterSpacing: '0.5px' }}>
               Competencies
-            </h4>
-            <div className="clean-card" style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '8px'
-            }}>
+            </h5>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignContent: 'flex-start' }}>
               {softSkills.map((skill, idx) => (
-                <span 
-                  key={idx}
-                  style={{
-                    fontSize: '11px',
-                    fontWeight: '800',
-                    padding: '6px 12px',
-                    borderRadius: '20px',
-                    backgroundColor: idx % 2 === 0 ? 'var(--color-charcoal)' : 'var(--bg-canvas)',
-                    color: idx % 2 === 0 ? '#ffffff' : 'var(--color-charcoal)',
-                    border: '1px solid rgba(0,0,0,0.03)'
-                  }}
-                >
+                <span key={idx} className="competency-badge-pill">
                   #{skill}
                 </span>
               ))}
@@ -299,36 +331,10 @@ const ExperienceSection = () => {
           </div>
 
         </div>
-
-        {/* Column 3: Education */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <h4 style={{ fontSize: '15px', fontWeight: '800', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-charcoal)' }}>
-            <GraduationCap size={16} color="var(--color-text-muted)" />
-            Education
-          </h4>
-          <Timeline items={educationData} />
-          
-          {/* Organizations Timeline Card */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
-            <h4 style={{ fontSize: '14px', fontWeight: '800', textTransform: 'uppercase', color: 'var(--color-charcoal)' }}>
-              Organizations
-            </h4>
-            <div className="clean-card" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: '800', color: 'var(--color-red)' }}>
-                <span>HMIT ITS SURABAYA</span>
-                <span>2025</span>
-              </div>
-              <h5 style={{ fontSize: '13px', fontWeight: '800', color: 'var(--color-charcoal)' }}>Staff of External Affairs</h5>
-              <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', lineHeight: '1.4' }}>
-                Led the ITCare 2.0 aid distribution program. Organized "Company Visit 2.0" to Apple Developer Academy and IDX.
-              </p>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   );
 };
 
 export default ExperienceSection;
+export { TechIcon };

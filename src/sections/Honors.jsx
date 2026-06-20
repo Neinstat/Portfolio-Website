@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Award, Trophy, Eye, CheckCircle2 } from 'lucide-react';
+import { Award, Trophy, CheckCircle2 } from 'lucide-react';
 
 const Honors = () => {
-  const awardsData = [
+  const honorsData = [
     {
       id: 1,
+      type: 'award',
       title: 'Best Design Award',
       issuer: 'National Robot Contest (KRI) 2024',
       date: '2024',
@@ -14,6 +15,7 @@ const Honors = () => {
     },
     {
       id: 2,
+      type: 'certification',
       title: 'Robotics Design Internship',
       issuer: 'IRIS Robotic Team ITS',
       date: '2023',
@@ -23,16 +25,27 @@ const Honors = () => {
     },
     {
       id: 3,
+      type: 'certification',
       title: 'ATOM Organizational Management',
       issuer: 'HMIT ITS Surabaya',
       date: '2025',
       description: 'Advance Training for Organizational Management, certifying project management, strategic communications, and IDX Apple Academy visits leadership.',
       credentialId: 'HMIT-ATOM-2025-043',
       details: 'Issued by Himpunan Mahasiswa Teknologi Informasi (HMIT) ITS Sepuluh Nopember.'
+    },
+    {
+      id: 4,
+      type: 'certification',
+      title: 'Big Data Analytics Certificate',
+      issuer: 'Kimia Farma × Rakamin Academy',
+      date: '2026',
+      description: 'Completed comprehensive virtual data engineering and business analytics program, including ETL processes in BigQuery and Looker Studio dashboards.',
+      credentialId: 'KF-BDA-RAKAMIN-2026',
+      details: 'Issued upon successful completion of virtual internship projects and technical challenges.'
     }
   ];
 
-  const [activeCredential, setActiveCredential] = useState(awardsData[0]);
+  const [activeCredential, setActiveCredential] = useState(honorsData[0]);
 
   return (
     <div>
@@ -46,10 +59,10 @@ const Honors = () => {
           textTransform: 'uppercase',
           letterSpacing: '0.5px'
         }}>
-          Board of Awards
+          Board of Honors
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-muted)', marginTop: '6px', lineHeight: '1.5' }}>
-          Honors and achievements received from academic robotic communities, student organisations, and events.
+          My verified trophies, national robot contest awards, and IT certifications.
         </p>
       </div>
 
@@ -61,72 +74,161 @@ const Honors = () => {
         alignItems: 'start'
       }} className="honors-split-layout">
         
-        {/* Left Side: Awards List */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          {awardsData.map((award) => {
-            const isSelected = activeCredential?.id === award.id;
-            return (
-              <div 
-                key={award.id}
-                onClick={() => setActiveCredential(award)}
-                className="clean-card"
-                style={{
-                  cursor: 'pointer',
-                  border: isSelected ? '1.5px solid var(--color-red)' : '1px solid rgba(0,0,0,0.03)',
-                  backgroundColor: '#ffffff',
-                  boxShadow: isSelected ? 'var(--shadow-hover)' : 'var(--shadow-card)',
-                  transition: 'all 0.2s',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px'
-                }}
-              >
-                <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  backgroundColor: isSelected ? 'var(--color-red)' : 'rgba(29,31,33,0.05)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: isSelected ? '#ffffff' : 'var(--color-charcoal)',
-                  flexShrink: 0
-                }}>
-                  <Trophy size={18} />
-                </div>
-                
-                <div style={{ flexGrow: 1, minWidth: 0 }}>
-                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                    <span style={{
-                      backgroundColor: 'var(--color-charcoal)',
-                      color: '#ffffff',
-                      fontSize: '9px',
-                      fontWeight: '800',
-                      padding: '2px 6px',
-                      borderRadius: '8px'
+        {/* Left Side: Awards & Certifications divided */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+          
+          {/* Sub-section: Awards */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <h4 style={{ fontSize: '14px', fontWeight: '900', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-charcoal)', letterSpacing: '0.5px' }}>
+              <Trophy size={16} color="var(--color-red)" />
+              Awards &amp; Trophies
+            </h4>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {honorsData.filter(item => item.type === 'award').map((award) => {
+                const isSelected = activeCredential?.id === award.id;
+                return (
+                  <div 
+                    key={award.id}
+                    onClick={() => setActiveCredential(award)}
+                    className="clean-card"
+                    style={{
+                      cursor: 'pointer',
+                      border: isSelected ? '1.5px solid var(--color-red)' : '1px solid rgba(0,0,0,0.03)',
+                      backgroundColor: '#ffffff',
+                      boxShadow: isSelected ? 'var(--shadow-hover)' : 'var(--shadow-card)',
+                      transition: 'all 0.2s',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '16px',
+                      padding: '14px 18px'
+                    }}
+                  >
+                    <div style={{
+                      width: '34px',
+                      height: '34px',
+                      borderRadius: '50%',
+                      backgroundColor: isSelected ? 'var(--color-red)' : 'rgba(29,31,33,0.05)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: isSelected ? '#ffffff' : 'var(--color-charcoal)',
+                      flexShrink: 0
                     }}>
-                      {award.date}
-                    </span>
-                    <span style={{ fontSize: '10px', color: 'var(--color-text-muted)', fontWeight: '700', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {award.issuer}
-                    </span>
+                      <Trophy size={16} />
+                    </div>
+                    
+                    <div style={{ flexGrow: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                        <span style={{
+                          backgroundColor: 'var(--color-charcoal)',
+                          color: '#ffffff',
+                          fontSize: '8px',
+                          fontWeight: '800',
+                          padding: '1px 5px',
+                          borderRadius: '6px'
+                        }}>
+                          {award.date}
+                        </span>
+                        <span style={{ fontSize: '10px', color: 'var(--color-text-muted)', fontWeight: '700', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {award.issuer}
+                        </span>
+                      </div>
+                      <h4 style={{
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '13px',
+                        fontWeight: '800',
+                        color: 'var(--color-charcoal)',
+                        marginTop: '3px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {award.title}
+                      </h4>
+                    </div>
                   </div>
-                  <h4 style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '14px',
-                    fontWeight: '800',
-                    color: 'var(--color-charcoal)',
-                    marginTop: '4px',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap'
-                  }}>
-                    {award.title}
-                  </h4>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Sub-section: Certifications */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <h4 style={{ fontSize: '14px', fontWeight: '900', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-charcoal)', letterSpacing: '0.5px' }}>
+              <Award size={16} color="var(--color-red)" />
+              Certifications &amp; Training
+            </h4>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {honorsData.filter(item => item.type === 'certification').map((cert) => {
+                const isSelected = activeCredential?.id === cert.id;
+                return (
+                  <div 
+                    key={cert.id}
+                    onClick={() => setActiveCredential(cert)}
+                    className="clean-card"
+                    style={{
+                      cursor: 'pointer',
+                      border: isSelected ? '1.5px solid var(--color-red)' : '1px solid rgba(0,0,0,0.03)',
+                      backgroundColor: '#ffffff',
+                      boxShadow: isSelected ? 'var(--shadow-hover)' : 'var(--shadow-card)',
+                      transition: 'all 0.2s',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '16px',
+                      padding: '14px 18px'
+                    }}
+                  >
+                    <div style={{
+                      width: '34px',
+                      height: '34px',
+                      borderRadius: '50%',
+                      backgroundColor: isSelected ? 'var(--color-red)' : 'rgba(29,31,33,0.05)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: isSelected ? '#ffffff' : 'var(--color-charcoal)',
+                      flexShrink: 0
+                    }}>
+                      <Award size={16} />
+                    </div>
+                    
+                    <div style={{ flexGrow: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                        <span style={{
+                          backgroundColor: 'var(--color-charcoal)',
+                          color: '#ffffff',
+                          fontSize: '8px',
+                          fontWeight: '800',
+                          padding: '1px 5px',
+                          borderRadius: '6px'
+                        }}>
+                          {cert.date}
+                        </span>
+                        <span style={{ fontSize: '10px', color: 'var(--color-text-muted)', fontWeight: '700', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {cert.issuer}
+                        </span>
+                      </div>
+                      <h4 style={{
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '13px',
+                        fontWeight: '800',
+                        color: 'var(--color-charcoal)',
+                        marginTop: '3px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {cert.title}
+                      </h4>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
         </div>
 
         {/* Right Side: Credential Details */}
@@ -153,7 +255,7 @@ const Honors = () => {
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <Award size={22} />
+                  {activeCredential.type === 'award' ? <Trophy size={22} /> : <Award size={22} />}
                 </div>
                 <div style={{
                   display: 'flex',
@@ -239,7 +341,7 @@ const Honors = () => {
             }}>
               <Award size={36} strokeWidth={1.5} />
               <span style={{ fontSize: '13px', fontWeight: '700' }}>
-                Select an award from the left to view verified credentials.
+                Select an honor item from the left to view verified credentials.
               </span>
             </div>
           )}

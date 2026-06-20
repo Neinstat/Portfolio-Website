@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle, Mail, Globe, Phone } from 'lucide-react';
+import { Send, CheckCircle, Mail, Globe } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,15 +8,43 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.name && formData.email && formData.message) {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({ name: '', email: '', message: '' });
-      }, 3000);
+      setIsSubmitting(true);
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/mandreanrizqp@gmail.com", {
+          method: "POST",
+          headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            _subject: `New Portfolio Message from ${formData.name}`,
+            _replyto: formData.email
+          })
+        });
+        
+        if (response.ok) {
+          setIsSubmitted(true);
+          setFormData({ name: '', email: '', message: '' });
+          setTimeout(() => {
+            setIsSubmitted(false);
+          }, 5000);
+        } else {
+          alert("Failed to send message. Please contact me directly at mandreanrizqp@gmail.com.");
+        }
+      } catch (error) {
+        console.error("FormSubmit error:", error);
+        alert("An error occurred. Please contact me directly at mandreanrizqp@gmail.com.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -66,10 +94,6 @@ const Contact = () => {
 
           {/* Quick Contact Specs */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '12px', fontWeight: '700', color: 'var(--color-charcoal)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Phone size={14} color="var(--color-red)" />
-              <span>+62 813-2860-2748</span>
-            </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Mail size={14} color="var(--color-red)" />
               <span>mandreanrizqp@gmail.com</span>
@@ -190,10 +214,16 @@ const Contact = () => {
               <button 
                 type="submit"
                 className="btn-cta primary"
-                style={{ width: '100%', marginTop: '8px' }}
+                style={{ 
+                  width: '100%', 
+                  marginTop: '8px',
+                  opacity: isSubmitting ? 0.7 : 1,
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                }}
+                disabled={isSubmitting}
               >
                 <Send size={13} />
-                Send Message
+                {isSubmitting ? 'Sending Message...' : 'Send Message'}
               </button>
             </form>
           )}

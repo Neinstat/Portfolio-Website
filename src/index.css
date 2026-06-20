@@ -82,6 +82,65 @@ button {
   z-index: 0;
 }
 
+/* Floating Animations for Lego and Spiderman Webs */
+@keyframes float-slow {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes float-fast {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(-6deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.floating-lego-1 {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.floating-lego-2 {
+  animation: float-fast 5s ease-in-out infinite;
+}
+
+.floating-web-1 {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+/* Epic Tech-Screen Panel (Hero Redesign) */
+.hero-screen-panel {
+  background-color: var(--color-charcoal);
+  border: 2px solid var(--color-red);
+  box-shadow: 0 0 25px var(--color-red-glow);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  padding: 48px;
+  color: #ffffff;
+  background-image: radial-gradient(rgba(229, 37, 33, 0.15) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  text-align: center;
+}
+
+/* RPG Character Skill Stats Bars */
+.rpg-stat-bar-track {
+  width: 100%;
+  height: 10px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 4px;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.rpg-stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--color-charcoal) 30%, var(--color-red));
+  border-radius: 6px;
+  box-shadow: 0 0 8px var(--color-red-glow);
+}
+
 /* Overlapping Archive Tabs Layout */
 .archive-tab-deck {
   display: flex;
@@ -201,6 +260,7 @@ button {
   justify-content: center;
   z-index: 10;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.02);
+  white-space: nowrap;
 }
 
 .stable-folder-img-box {
@@ -404,4 +464,337 @@ button {
     padding: 0 16px;
     font-size: 12px;
   }
+  .about-split-grid, .project-detail-layout, .honors-split-layout, .contact-split-grid, .education-grid-layout, .skills-grid-layout {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .resume-grid-layout {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+}
+
+/* --- GDEVELOP REDESIGN LANDSCAPE STYLES --- */
+
+.hero-gdevelop-space {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #05060b 0%, #0c0f1b 50%, #151a2d 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 24px 180px 24px;
+}
+
+/* Background Stars */
+.gdevelop-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 10% 20%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 25% 40%, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 45% 15%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 60% 70%, rgba(229, 37, 33, 0.5), rgba(0,0,0,0)), /* Spiderman red star */
+    radial-gradient(1px 1px at 75% 35%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 85% 80%, rgba(255,255,255,0.9), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90% 25%, #ffffff, rgba(0,0,0,0));
+  background-size: 550px 550px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Moon / Planet */
+.hero-moon {
+  position: absolute;
+  top: 10%;
+  left: 8%;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #e8fcfd 0%, #a2f2f7 60%, #6be3eb 100%);
+  box-shadow: 0 0 40px rgba(107, 227, 235, 0.4), inset -10px -10px 20px rgba(0,0,0,0.15);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Centered GDevelop style content */
+.hero-content-gd {
+  max-width: 750px;
+  text-align: center;
+  color: #ffffff;
+  z-index: 5;
+  margin-top: -40px;
+}
+
+.hero-title-gd {
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+.hero-subtitle-gd {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 3.5vw, 18px);
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-btns-gd {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-red);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 20px rgba(229, 37, 33, 0.4);
+  transition: all 0.25s ease;
+}
+
+.hero-btn-red:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(229, 37, 33, 0.6);
+  background-color: #f23d38;
+}
+
+.hero-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 12px 28px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+}
+
+.hero-btn-outline:hover {
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+}
+
+/* Floating Islands */
+.hero-island {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+  z-index: 2;
+}
+
+.island-left {
+  left: -2%;
+  bottom: 20%;
+  width: clamp(220px, 25vw, 360px);
+  animation: bob-island-left 7s ease-in-out infinite;
+}
+
+.island-right {
+  right: -2%;
+  bottom: 25%;
+  width: clamp(200px, 22vw, 320px);
+  animation: bob-island-right 8s ease-in-out infinite;
+}
+
+.island-mid {
+  left: 45%;
+  bottom: 12%;
+  width: 140px;
+  animation: bob-island-mid 6s ease-in-out infinite;
+}
+
+@keyframes bob-island-left {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes bob-island-right {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes bob-island-mid {
+  0% { transform: translateY(0) scale(0.9); }
+  50% { transform: translateY(-8px) scale(0.95); }
+  100% { transform: translateY(0) scale(0.9); }
+}
+
+/* Floating Lego Character */
+.lego-character-hero {
+  position: absolute;
+  width: clamp(55px, 6vw, 85px);
+  z-index: 3;
+  animation: spider-bob 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+}
+
+@keyframes spider-bob {
+  0% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(-2deg); }
+}
+
+/* Portal Gate Glow */
+.portal-glow {
+  position: absolute;
+  width: 80px;
+  height: 120px;
+  background: radial-gradient(ellipse at center, rgba(162, 242, 247, 0.8) 0%, rgba(107, 227, 235, 0.4) 50%, rgba(0,0,0,0) 80%);
+  filter: blur(8px);
+  border-radius: 50% 50% 0 0;
+  animation: portal-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes portal-pulse {
+  0% { opacity: 0.6; transform: scale(0.95); }
+  100% { opacity: 0.9; transform: scale(1.05); }
+}
+
+/* Floating Gold Coin */
+.floating-coin {
+  position: absolute;
+  left: 49%;
+  bottom: 24%;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #ffe066 0%, #f59e0b 100%);
+  border-radius: 50%;
+  border: 1.5px solid #d97706;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+  z-index: 4;
+  animation: coin-spin 3s ease-in-out infinite alternate;
+}
+
+@keyframes coin-spin {
+  0% { transform: translateY(0) rotateY(0deg); }
+  100% { transform: translateY(-12px) rotateY(360deg); }
+}
+
+/* Transition Clouds Bottom */
+.hero-transition-clouds {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 80px;
+  z-index: 10;
+  color: var(--bg-canvas); /* Transition to background color */
+  fill: currentColor;
+}
+
+/* --- VERTICAL SCROLL LAYOUT SECTIONS --- */
+
+.scroll-section-container {
+  background-color: var(--bg-canvas);
+  padding: 40px 0 80px 0;
+  position: relative;
+  z-index: 20;
+}
+
+.scroll-section-anchor {
+  padding: 48px 0;
+  border-bottom: 1.5px dashed rgba(21, 23, 25, 0.05);
+  scroll-margin-top: 80px; /* Offset for sticky navbar */
+}
+
+.scroll-section-anchor:last-of-type {
+  border-bottom: none;
+}
+
+.scroll-section-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-premium);
+  padding: 48px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 768px) {
+  .scroll-section-card {
+    padding: 28px 16px;
+    border-radius: 16px;
+  }
+}
+
+/* Spiderman Lego Head Badge for Peeking */
+.spiderman-badge-peeking {
+  position: absolute;
+  bottom: -15px;
+  left: -20px;
+  width: 65px;
+  height: 65px;
+  z-index: 25;
+  transform: rotate(-15deg);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.spiderman-badge-peeking:hover {
+  transform: rotate(-5deg) scale(1.15) translateY(-5px);
+}
+
+/* Tech Stack and Competency Badges */
+.tech-stack-item-card {
+  border-radius: 12px;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #fafafa;
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.tech-stack-item-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-red);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+.competency-badge-pill {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background-color: var(--bg-canvas);
+  color: var(--color-charcoal);
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.2s;
+}
+.competency-badge-pill:hover {
+  background-color: var(--color-charcoal);
+  color: #ffffff;
 }

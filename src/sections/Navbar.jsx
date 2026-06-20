@@ -52,8 +52,8 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             width: '28px',
             height: '28px',
             borderRadius: '50%',
-            backgroundColor: 'var(--color-text)',
-            color: 'var(--bg-canvas)',
+            backgroundColor: 'var(--color-red)',
+            color: '#ffffff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -61,7 +61,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             fontWeight: '900',
             fontFamily: 'var(--font-heading)'
           }}>
-            Q
+            A
           </div>
           
           <div style={{ display: 'flex', gap: '20px', height: '100%' }}>
